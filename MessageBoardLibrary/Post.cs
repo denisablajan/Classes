@@ -8,15 +8,27 @@ namespace MessageBoardLibrary
 {
     public class Post
     {
-        User Author;
-        string Message;
+        public Account Author;
+        public string Message;
+        public DateTime timePosted;
 
-        public Post(User Author, string Message)
+        public Post(Account Author)
+        {
+            this.Author = Author;
+            this.Message = "";
+            this.timePosted = DateTime.Now;
+        }
+
+        public Post(Account Author, string Message)
         {
             this.Author = Author;
             this.Message = Message;
+            this.timePosted = DateTime.Now;
         }
 
-        public void CreatePost() { }
+        public override string ToString()
+        {
+            return "\t" + this.Author.FullName + " : '" + this.Message + "'";
+        }
     }
 }
